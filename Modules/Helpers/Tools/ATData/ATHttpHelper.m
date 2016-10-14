@@ -7,7 +7,21 @@
 //
 
 #import "ATHttpHelper.h"
+#import "AFNetworking.h"
 
 @implementation ATHttpHelper
+
++(AFHTTPSessionManager *)getRequestManager
+{
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    //请求超时设置
+    manager.requestSerializer.timeoutInterval=30.f;
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
+    //证书
+//    manager.securityPolicy.allowInvalidCertificates=YES;
+    return manager;
+}
+
+
 
 @end
