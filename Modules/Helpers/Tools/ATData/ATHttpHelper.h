@@ -57,22 +57,22 @@ typedef void (^progressBlock)(int64_t bytesWritten, int64_t totalBytesWritten, i
 +(void)uploadFileRequest:(NSString *)url
                   params:(NSDictionary *)params
               fileConfig:(ATFileConfig *)fileConfig
-            success:(requestSucessBlock *)successHandler
-                failure:(requestFailureBlock *)failureHandler;
+            success:(requestSucessBlock)successHandler
+                failure:(requestFailureBlock)failureHandler;
 
 ///文件上传,进度
 +(void)uploadFileRequest:(NSString *)url
                   params:(NSDictionary *)params
               fileConfig:(ATFileConfig *)fileConfig
-            fileProgress:(progressBlock *)progressHandler
-                complete:(reponseBlock *)completionHandler;
+            fileProgress:(progressBlock)progressHandler
+                complete:(reponseBlock)completionHandler;
 
 ///文件下载，进度
 +(void)downloadFileRequest:(NSString *)url
                     params:(NSDictionary *)params
                 fileConfig:(ATFileConfig *)fileConfig
-              fileProgress:(progressBlock *)progressHandler
-                  complete:(reponseBlock *)completionHandler;
+              fileProgress:(progressBlock)progressHandler
+                  complete:(reponseBlock)completionHandler;
 
 @end
 
