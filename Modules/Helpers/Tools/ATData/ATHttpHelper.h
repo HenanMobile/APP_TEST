@@ -19,7 +19,11 @@ typedef void (^requestFailureBlock)(NSError *error);
 ///请求响应
 typedef void (^reponseBlock)(id responseObj,NSError *error);
 
-///监听响应进度
+/**监听响应进度
+*  @param bytesWritten              【这次回调】写入的数据量
+*  @param totalBytesWritten         【目前总共】写入的数据量
+*  @param totalBytesExpectedToWrite 【最终需要】写入的数据量
+*/
 typedef void (^progressBlock)(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedTowrite);
 
 

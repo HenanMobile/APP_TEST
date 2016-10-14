@@ -4,5 +4,5 @@ pod 'MJRefresh'
 pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'MBProgressHUD'
-pod 'JSONKit'
+pod 'MJExtension'
 end

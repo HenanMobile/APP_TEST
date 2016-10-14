@@ -225,5 +225,34 @@
     }];
 }
 
+/**
+ *  上传文件，进度
+ */
++(void)uploadFileRequest:(NSString *)url
+                  params:(NSDictionary *)params
+              fileConfig:(ATFileConfig *)fileConfig
+            fileProgress:(progressBlock)progressHandler
+                complete:(reponseBlock)completionHandler
+{
+    if (![self getRequestManager]) {
+        progressHandler(0,0,0);
+        completionHandler(nil,nil);
+        return;
+    }
+    
+    AFHTTPSessionManager *manager=[self getRequestManager];
+    [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:fileConfig.fileData name:fileConfig.name fileName:fileConfig.fileName mimeType:fileConfig.mimeType];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+//TODO: 进度
+        progressHandler(0,uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler(responseObject,nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"----------上传文件失败-------%@",error);
+        completionHandler(nil,error);
+    }];
+    
+}
 
 @end
