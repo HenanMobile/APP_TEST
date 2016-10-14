@@ -1,0 +1,8 @@
+platform :ios, ‘9.3’
+target 'APP_TEST' do
+pod 'MJRefresh'
+pod 'AFNetworking'
+pod 'SDWebImage'
+pod 'MBProgressHUD'
+pod 'JSONKit'
+end
